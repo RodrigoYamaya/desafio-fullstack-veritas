@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,8 +17,16 @@ func GetTasks(c *gin.Context) {
 func CreatedTask(c *gin.Context) {
 	var newTask Task
 
-	if err := c.ShouldBindBodyWithJSON(& newTask): err != nill {
-
+	if err := c.ShouldBindJSON(&newTask); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Error": err.Error()})
+		return
 	}
-}
 
+	newTask.ID = nextID
+	newTask.Status = "A fazer"
+	newTask.CreatedAt = time.Now()
+	nextID++
+	Tasks = append(Tasks, newTask)
+
+	c.JSON(http.StatusCreated, newTask)
+}
