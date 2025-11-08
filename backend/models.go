@@ -3,7 +3,7 @@ package main
 import "time"
 
 type Task struct {
-	ID          uint      `json:"id"`
+	ID          string    `json:"id"`
 	Title       string    `json:"title"`
 	Description string    `json:"description"`
 	Status      string    `json:"status"`
