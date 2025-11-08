@@ -1,19 +1,8 @@
 package main
 
-import (
-	"github.com/gin-gonic/gin"
-)
+import "fmt"
 
 func main() {
-
-	server := gin.Default()
-
-	server.GET("/ping", func(ctx *gin.Context) {
-		ctx.JSON(200, gin.H{
-			"menssage": "pong",
-		})
-	})
-
-	server.Run(":8000")
+	fmt.Println("ola mundo!!")
 
 }
