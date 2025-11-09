@@ -48,14 +48,35 @@ func CreateTask(c *gin.Context) {
 		return
 	}
 
+	if newTask.Title == "" {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error":   true,
+			"message": "O título da tarefa é obrigatório",
+		})
+		return
+	}
+
+	validStatus := map[string]bool{"A fazer": true, "Em andamento": true, "Concluída": true}
+	if newTask.Status != "" && !validStatus[newTask.Status] {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error":   true,
+			"message": "Status inválido. Use: 'A fazer', 'Em andamento' ou 'Concluída'",
+		})
+		return
+	}
+
+	if newTask.Status == "" {
+		newTask.Status = "A fazer"
+	}
+
 	newTask.ID = uuid.New().String()
-	newTask.Status = "A fazer"
 	newTask.CreatedAt = time.Now()
 
 	Tasks = append(Tasks, newTask)
 	saveTasks()
 
 	c.JSON(http.StatusCreated, newTask)
+
 }
 
 func UpdateTask(c *gin.Context) {
@@ -72,6 +93,23 @@ func UpdateTask(c *gin.Context) {
 
 	}
 
+	if newTask.Title == "" {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error":   true,
+			"message": "O título da tarefa é obrigatório",
+		})
+		return
+	}
+
+	validStatus := map[string]bool{"A fazer": true, "Em andamento": true, "Concluída": true}
+	if newTask.Status != "" && !validStatus[newTask.Status] {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error":   true,
+			"message": "Status inválido. Use: 'A fazer', 'Em andamento' ou 'Concluída'",
+		})
+		return
+	}
+
 	for i, u := range Tasks {
 		if u.ID == id {
 			Tasks[i].Title = newTask.Title
@@ -79,7 +117,12 @@ func UpdateTask(c *gin.Context) {
 			Tasks[i].Status = newTask.Status
 			saveTasks()
 
-			c.JSON(http.StatusOK, newTask)
+			c.JSON(http.StatusOK, gin.H{
+				"error":   false,
+				"message": "Tarefa atualizada com sucesso",
+				"task":    Tasks[i],
+			})
+
 			return
 
 		}
@@ -87,7 +130,7 @@ func UpdateTask(c *gin.Context) {
 
 	c.JSON(http.StatusNotFound, gin.H{
 		"error":   true,
-		"message": "Task not found",
+		"message": "tarefa não encontrada",
 	})
 
 }
@@ -102,8 +145,9 @@ func DeleteTask(c *gin.Context) {
 
 			c.JSON(http.StatusOK, gin.H{
 				"error":   false,
-				"message": "Task deleted successfully",
+				"message": "Tarefa removida com sucesso",
 			})
+
 			return
 		}
 
@@ -111,7 +155,7 @@ func DeleteTask(c *gin.Context) {
 
 	c.JSON(http.StatusNotFound, gin.H{
 		"error":   true,
-		"message": "Task not found",
+		"message": "tarefa não encontrada",
 	})
 
 }
