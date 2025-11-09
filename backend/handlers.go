@@ -4,17 +4,39 @@ import (
 	"net/http"
 	"time"
 
+	"encoding/json"
+	"os"
+
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 )
 
 var Tasks []Task
 
+const filePath = "tasks.json"
+
+func loadTasks() {
+	file, err := os.ReadFile(filePath)
+	if err != nil {
+		Tasks = []Task{}
+		return
+	}
+	json.Unmarshal(file, &Tasks)
+}
+
+func saveTasks() {
+	data, err := json.MarshalIndent(Tasks, "", "  ")
+	if err != nil {
+		return
+	}
+	os.WriteFile(filePath, data, 0644)
+}
+
 func GetTasks(c *gin.Context) {
 	c.JSON(http.StatusOK, Tasks)
 }
 
-func CreatedTask(c *gin.Context) {
+func CreateTask(c *gin.Context) {
 	var newTask Task
 
 	if err := c.ShouldBindJSON(&newTask); err != nil {
@@ -31,6 +53,7 @@ func CreatedTask(c *gin.Context) {
 	newTask.CreatedAt = time.Now()
 
 	Tasks = append(Tasks, newTask)
+	saveTasks()
 
 	c.JSON(http.StatusCreated, newTask)
 }
@@ -54,6 +77,7 @@ func UpdateTask(c *gin.Context) {
 			Tasks[i].Title = newTask.Title
 			Tasks[i].Description = newTask.Description
 			Tasks[i].Status = newTask.Status
+			saveTasks()
 
 			c.JSON(http.StatusOK, newTask)
 			return
@@ -74,6 +98,8 @@ func DeleteTask(c *gin.Context) {
 	for i, u := range Tasks {
 		if u.ID == id {
 			Tasks = append(Tasks[:i], Tasks[i+1:]...)
+			saveTasks()
+
 			c.JSON(http.StatusOK, gin.H{
 				"error":   false,
 				"message": "Task deleted successfully",
