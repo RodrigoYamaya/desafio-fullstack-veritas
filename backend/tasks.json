@@ -1,9 +1,16 @@
 [
   {
-    "id": "d8a2b157-d454-4eaa-84a7-5788a494c64e",
-    "title": "Implementar o Frontend em React",
-    "description": "Criar a estrutura de colunas e a lógica de mover tarefas.",
+    "id": "1e2810c3-268a-4347-b18b-561cca1e9019",
+    "title": "A3 computação grafica ",
+    "description": "Criar a estrutura de objetos e animação dos arquivos fbx e aplicar fog alem disso terreno 300 metros, iluminação",
     "status": "A fazer",
-    "createdAt": "2025-11-08T21:37:43.3821318-03:00"
+    "createdAt": "2025-11-08T22:13:12.7520676-03:00"
+  },
+  {
+    "id": "45e4aef0-e956-478d-bdc3-44c50834708f",
+    "title": "A3 metodologias e engenharia de software ",
+    "description": "Criar os slides para apresentação do projeto sobre o tema sobre IA na computação grafica aplicada a metodologias Agil SCRUM",
+    "status": "A fazer",
+    "createdAt": "2025-11-08T22:15:07.408559-03:00"
   }
 ]
