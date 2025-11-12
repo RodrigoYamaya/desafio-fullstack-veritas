@@ -1,16 +1,79 @@
 [
   {
-    "id": "1e2810c3-268a-4347-b18b-561cca1e9019",
-    "title": "A3 computação grafica ",
-    "description": "Criar a estrutura de objetos e animação dos arquivos fbx e aplicar fog alem disso terreno 300 metros, iluminação",
-    "status": "A fazer",
-    "createdAt": "2025-11-08T22:13:12.7520676-03:00"
+    "id": "93f1474d-aad2-4f20-a192-8e8384ff5450",
+    "title": "java e kafka",
+    "description": "estudar mensageria ",
+    "status": "",
+    "createdAt": "2025-11-11T17:50:29.5545741-03:00"
   },
   {
-    "id": "45e4aef0-e956-478d-bdc3-44c50834708f",
-    "title": "A3 metodologias e engenharia de software ",
-    "description": "Criar os slides para apresentação do projeto sobre o tema sobre IA na computação grafica aplicada a metodologias Agil SCRUM",
+    "id": "dc876034-7f98-434e-b81e-98a730f3bea1",
+    "title": "api golang",
+    "description": "golang api rest full",
+    "status": "",
+    "createdAt": "2025-11-11T17:50:46.3446082-03:00"
+  },
+  {
+    "id": "a7783b03-eb34-4e77-80ea-c664ef0b5f20",
+    "title": "golang",
+    "description": "",
     "status": "A fazer",
-    "createdAt": "2025-11-08T22:15:07.408559-03:00"
+    "createdAt": "2025-11-11T17:51:05.3112131-03:00"
+  },
+  {
+    "id": "ceb6ec04-fb2d-4a3d-97da-199f9a06b09f",
+    "title": "api",
+    "description": "",
+    "status": "A fazer",
+    "createdAt": "2025-11-11T17:51:08.8864497-03:00"
+  },
+  {
+    "id": "f900d8c4-884e-4694-aec2-e4f17c6c480c",
+    "title": "golang api rest full",
+    "description": "",
+    "status": "A fazer",
+    "createdAt": "2025-11-11T18:16:02.7611757-03:00"
+  },
+  {
+    "id": "d8524074-84c6-45ca-ab33-f9109151f357",
+    "title": "back and java",
+    "description": "",
+    "status": "A fazer",
+    "createdAt": "2025-11-11T19:32:16.3069334-03:00"
+  },
+  {
+    "id": "682a2e09-103f-4e03-a9a9-e8bb0b021c9b",
+    "title": "back and golang api rest",
+    "description": "",
+    "status": "A fazer",
+    "createdAt": "2025-11-11T20:02:15.9336768-03:00"
+  },
+  {
+    "id": "4d6bd959-effd-4ac3-a17b-c42a17c7fabc",
+    "title": "java e spring boot",
+    "description": "",
+    "status": "A fazer",
+    "createdAt": "2025-11-11T21:05:47.2890735-03:00"
+  },
+  {
+    "id": "f7e96977-713c-4332-bf46-5f7ee58b325e",
+    "title": "Api rest full em golang projeto",
+    "description": "",
+    "status": "A fazer",
+    "createdAt": "2025-11-11T21:14:48.4253913-03:00"
+  },
+  {
+    "id": "98339c60-c54d-45e9-8497-28afe6aa79a9",
+    "title": "html e css estudar",
+    "description": "",
+    "status": "A fazer",
+    "createdAt": "2025-11-11T21:55:31.8358517-03:00"
+  },
+  {
+    "id": "530cf967-c72e-4425-bb0a-88b12bd0e0cc",
+    "title": "estudar IA e automação",
+    "description": "",
+    "status": "A fazer",
+    "createdAt": "2025-11-11T22:02:17.2527572-03:00"
   }
 ]

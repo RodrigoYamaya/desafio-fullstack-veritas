@@ -1,0 +1,41 @@
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f1f1f1;
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+.task-id, .task-status {
+  background: #f7fafc;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.task-edit h4 {
+  margin-bottom: 10px;
+  color: #2d3748;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.task-edit {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px;
+  margin: -8px;
+}
+
+.task-edit .editable-input {
+  background: white;
+  border: 1px solid #e2e8f0;
+}
