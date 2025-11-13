@@ -8,19 +8,25 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const colunasFixas = [
+    { status: "A fazer", title: "A FAZER" },
+    { status: "Em andamento", title: "EM ANDAMENTO" },
+    { status: "Concluída", title: "CONCLUÍDA" },
+  ];
+
   useEffect(() => {
     loadTasks();
   }, []);
 
   useEffect(() => {
     if (tasks.length > 0) {
-      console.log("🔍 DEBUG - Todas as tarefas:", tasks);
-      console.log("🔍 DEBUG - Status únicos:", [...new Set(tasks.map((t) => t.Status))]);
+      console.log("Todas as tarefas:", tasks);
+      console.log("Status únicos:", [...new Set(tasks.map((t) => t.Status))]);
 
-      const statusPossiveis = ["A fazer", "Em Progresso", "Concluídas"];
+      const statusPossiveis = ["A fazer", "Em andamento", "Concluída"];
       statusPossiveis.forEach((status) => {
         const tarefasComStatus = tasks.filter((t) => t.Status === status);
-        console.log(`🔍 DEBUG - Tarefas com status "${status}":`, tarefasComStatus.length, tarefasComStatus);
+        console.log(`Tarefas com status "${status}":`, tarefasComStatus.length, tarefasComStatus);
       });
     }
   }, [tasks]);
@@ -129,46 +135,44 @@ export default function App() {
   const handleMove = async (id, novoStatus) => {
     try {
       console.log("🔄 Movendo tarefa:", id, "para:", novoStatus);
-      const updated = await updateTask(id, { status: novoStatus });
-      console.log("✅ Tarefa movida:", updated);
+      
+      const tarefaAtual = tasks.find(t => t.ID === id);
+      if (!tarefaAtual) {
+        throw new Error("Tarefa não encontrada");
+      }
 
-      const tarefaNormalizada = {
-        ID: updated.id,
-        Title: updated.title,
-        Description: updated.description,
-        Status: updated.status,
-        CreatedAt: updated.createdAt,
+      const dadosAtualizacao = {
+        title: tarefaAtual.Title,
+        description: tarefaAtual.Description || "",
+        status: novoStatus
       };
 
-      setTasks((prev) => prev.map((t) => (t.ID === id ? tarefaNormalizada : t)));
+      console.log("📤 Dados enviados para update:", dadosAtualizacao);
+
+      const updated = await updateTask(id, dadosAtualizacao);
+      console.log("✅ Tarefa movida:", updated);
+
+      setTasks((prev) => 
+        prev.map((t) => 
+          t.ID === id 
+            ? { 
+                ...t, 
+                Status: novoStatus,
+                Title: updated.title,
+                Description: updated.description
+              }
+            : t
+        )
+      );
       setError(null);
     } catch (e) {
       const errorMessage = e.response?.data?.message || e.message;
       const errorMsg = "Erro ao mover tarefa: " + errorMessage;
       setError(errorMsg);
       console.error("❌ Erro ao mover tarefa:", e);
+      loadTasks();
     }
   };
-
-  const descobrirColunas = () => {
-    if (tasks.length === 0) {
-      return [
-        { status: "A fazer", title: "A FAZER" },
-        { status: "Em Progresso", title: "EM PROGRESSO" },
-        { status: "Concluídas", title: "CONCLUÍDAS" },
-      ];
-    }
-
-    const statusUnicos = [...new Set(tasks.map((t) => t.Status))];
-    console.log("🎯 Status únicos encontrados nas tarefas:", statusUnicos);
-
-    return statusUnicos.map((status) => ({
-      status: status,
-      title: status.toUpperCase(),
-    }));
-  };
-
-  const definicoesColunas = descobrirColunas();
 
   if (loading) {
     return (
@@ -205,15 +209,15 @@ export default function App() {
       <div className="debug-info">
         <strong>🔍 DEBUG:</strong>
         <br />• Total de tarefas: {tasks.length}
-        <br />• Colunas detectadas:{" "}
-        {definicoesColunas
-          .map((col) => `${col.status} (${tasks.filter((t) => t.Status === col.status).length})`)
+        <br />• Colunas:{" "}
+        {colunasFixas
+          .map((col) => `${col.title} (${tasks.filter((t) => t.Status === col.status).length})`)
           .join(" | ")}
-        <br />• Status únicos: {[...new Set(tasks.map((t) => t.Status))].join(", ")}
+        <br />• Status únicos no backend: {[...new Set(tasks.map((t) => t.Status))].join(", ")}
       </div>
 
       <div className="columns">
-        {definicoesColunas.map(({ status, title }) => {
+        {colunasFixas.map(({ status, title }) => {
           const tarefasNaColuna = tasks.filter((t) => t.Status === status);
           console.log(`🎯 Coluna "${title}" (status: "${status}"):`, tarefasNaColuna.length, "tarefas");
 
@@ -221,6 +225,7 @@ export default function App() {
             <Column
               key={status}
               title={title}
+              status={status} 
               tasks={tarefasNaColuna}
               onCreate={handleCreate}
               onUpdate={handleUpdate}

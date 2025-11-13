@@ -1,4 +1,3 @@
-// frontend/src/Components/Column/Column.jsx
 import PropTypes from "prop-types";
 import TaskCard from "../TaskCard/TaskCard";
 import Editable from "../Editable/Editable"; 
@@ -6,6 +5,7 @@ import "./Column.css";
 
 export default function Column({
   title,
+  status, 
   tasks = [],
   onCreate, 
   onUpdate,
@@ -14,12 +14,12 @@ export default function Column({
 }) {
   const tituloParaStatus = {
     "A FAZER": "A fazer",
-    "EM PROGRESSO": "Em Progresso", 
-    "CONCLUÍDAS": "Concluídas"
+    "EM ANDAMENTO": "Em andamento", 
+    "CONCLUÍDA": "Concluída" 
   };
 
   const getDefaultStatus = () => {
-    return tituloParaStatus[title] || "A fazer";
+    return status || tituloParaStatus[title] || "A fazer";
   };
 
   const handleCreate = (titulo) => {
@@ -33,8 +33,8 @@ export default function Column({
   const getColumnType = () => {
     const types = {
       "A FAZER": "todo",
-      "EM PROGRESSO": "inprogress", 
-      "CONCLUÍDAS": "done"
+      "EM ANDAMENTO": "inprogress", 
+      "CONCLUÍDA": "done" 
     };
     return types[title] || "todo";
   };
@@ -57,6 +57,7 @@ export default function Column({
               onUpdate={onUpdate}
               onDelete={onDelete}
               onMove={onMove}
+              currentStatus={getDefaultStatus()} 
             />
           ))
         ) : (
@@ -82,6 +83,7 @@ export default function Column({
 
 Column.propTypes = {
   title: PropTypes.string.isRequired,
+  status: PropTypes.string, 
   tasks: PropTypes.array,
   onCreate: PropTypes.func,
   onUpdate: PropTypes.func,
@@ -91,4 +93,5 @@ Column.propTypes = {
 
 Column.defaultProps = {
   tasks: [],
+  status: "" 
 };

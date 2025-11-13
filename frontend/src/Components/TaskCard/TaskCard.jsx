@@ -1,9 +1,8 @@
-// frontend/src/Components/TaskCard/TaskCard.jsx
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./TaskCard.css";
 
-export default function TaskCard({ task, onUpdate, onDelete, onMove }) {
+export default function TaskCard({ task, onUpdate, onDelete, onMove }) { 
   const [editando, setEditando] = useState(false);
   const [titulo, setTitulo] = useState(""); 
   const [descricao, setDescricao] = useState(""); 
@@ -24,8 +23,8 @@ export default function TaskCard({ task, onUpdate, onDelete, onMove }) {
     }
     
     const atualizacoes = {
-      Title: titulo.trim(), 
-      Description: descricao 
+      title: titulo.trim(),
+      description: descricao
     };
     
     console.log('Salvando edição da tarefa:', task.ID, atualizacoes);
@@ -40,8 +39,8 @@ export default function TaskCard({ task, onUpdate, onDelete, onMove }) {
   };
 
   const STATUS_A_FAZER = "A fazer";
-  const STATUS_EM_PROGRESSO = "Em Progresso";
-  const STATUS_CONCLUIDAS = "Concluídas";
+  const STATUS_EM_ANDAMENTO = "Em andamento";
+  const STATUS_CONCLUIDA = "Concluída";
 
   return (
     <div className="task-card" data-status={task.Status}>
@@ -111,21 +110,21 @@ export default function TaskCard({ task, onUpdate, onDelete, onMove }) {
                 </button>
               )}
               
-              {task.Status !== STATUS_EM_PROGRESSO && (
+              {task.Status !== STATUS_EM_ANDAMENTO && (
                 <button 
                   className="btn btn-move btn-sm" 
-                  onClick={() => onMove(task.ID, STATUS_EM_PROGRESSO)}
-                  title={task.Status === STATUS_A_FAZER ? "Mover para Em Progresso" : "Voltar para Em Progresso"}
+                  onClick={() => onMove(task.ID, STATUS_EM_ANDAMENTO)}
+                  title={task.Status === STATUS_A_FAZER ? "Mover para Em Andamento" : "Voltar para Em Andamento"}
                 >
-                  {task.Status === STATUS_A_FAZER ? "➡️ Em Progresso" : "⬅️ Em Progresso"}
+                  {task.Status === STATUS_A_FAZER ? "➡️ Em Andamento" : "⬅️ Em Andamento"}
                 </button>
               )}
               
-              {task.Status !== STATUS_CONCLUIDAS && (
+              {task.Status !== STATUS_CONCLUIDA && (
                 <button 
                   className="btn btn-move btn-sm" 
-                  onClick={() => onMove(task.ID, STATUS_CONCLUIDAS)}
-                  title="Mover para Concluídas"
+                  onClick={() => onMove(task.ID, STATUS_CONCLUIDA)}
+                  title="Mover para Concluída"
                 >
                   ✅ Concluir
                 </button>

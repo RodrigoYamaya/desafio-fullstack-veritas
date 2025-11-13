@@ -16,64 +16,71 @@
   {
     "id": "a7783b03-eb34-4e77-80ea-c664ef0b5f20",
     "title": "golang",
-    "description": "",
-    "status": "A fazer",
+    "description": "api rest full em golang ",
+    "status": "",
     "createdAt": "2025-11-11T17:51:05.3112131-03:00"
   },
   {
     "id": "ceb6ec04-fb2d-4a3d-97da-199f9a06b09f",
-    "title": "api",
+    "title": "api rest full golang",
     "description": "",
-    "status": "A fazer",
+    "status": "",
     "createdAt": "2025-11-11T17:51:08.8864497-03:00"
   },
   {
     "id": "f900d8c4-884e-4694-aec2-e4f17c6c480c",
     "title": "golang api rest full",
-    "description": "",
-    "status": "A fazer",
+    "description": "api rest full em golang ",
+    "status": "",
     "createdAt": "2025-11-11T18:16:02.7611757-03:00"
   },
   {
     "id": "d8524074-84c6-45ca-ab33-f9109151f357",
     "title": "back and java",
-    "description": "",
-    "status": "A fazer",
+    "description": "Java spring boot",
+    "status": "",
     "createdAt": "2025-11-11T19:32:16.3069334-03:00"
-  },
-  {
-    "id": "682a2e09-103f-4e03-a9a9-e8bb0b021c9b",
-    "title": "back and golang api rest",
-    "description": "",
-    "status": "A fazer",
-    "createdAt": "2025-11-11T20:02:15.9336768-03:00"
-  },
-  {
-    "id": "4d6bd959-effd-4ac3-a17b-c42a17c7fabc",
-    "title": "java e spring boot",
-    "description": "",
-    "status": "A fazer",
-    "createdAt": "2025-11-11T21:05:47.2890735-03:00"
   },
   {
     "id": "f7e96977-713c-4332-bf46-5f7ee58b325e",
     "title": "Api rest full em golang projeto",
-    "description": "",
-    "status": "A fazer",
+    "description": "golang",
+    "status": "",
     "createdAt": "2025-11-11T21:14:48.4253913-03:00"
   },
   {
     "id": "98339c60-c54d-45e9-8497-28afe6aa79a9",
     "title": "html e css estudar",
-    "description": "",
-    "status": "A fazer",
+    "description": "front end em react",
+    "status": "",
     "createdAt": "2025-11-11T21:55:31.8358517-03:00"
   },
   {
     "id": "530cf967-c72e-4425-bb0a-88b12bd0e0cc",
     "title": "estudar IA e automação",
     "description": "",
-    "status": "A fazer",
+    "status": "",
     "createdAt": "2025-11-11T22:02:17.2527572-03:00"
+  },
+  {
+    "id": "3d7bec42-a474-44b0-88df-fc4d22eba365",
+    "title": "java e golang api rest full e microservices",
+    "description": "",
+    "status": "Concluída",
+    "createdAt": "2025-11-12T19:03:12.9764207-03:00"
+  },
+  {
+    "id": "16114ff9-6ae3-48c4-b75a-9dfb0baa3824",
+    "title": "estudar Computação grafica A3",
+    "description": "",
+    "status": "Em andamento",
+    "createdAt": "2025-11-12T20:57:00.0531368-03:00"
+  },
+  {
+    "id": "ad7735ae-7460-4af4-83e2-5de3024671df",
+    "title": "javascript apis restfull",
+    "description": "",
+    "status": "A fazer",
+    "createdAt": "2025-11-12T21:03:56.3385409-03:00"
   }
 ]
