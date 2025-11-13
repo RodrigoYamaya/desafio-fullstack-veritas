@@ -147,15 +147,22 @@ projeto-kanban
 │   │   ├── App.jsx
 │   │   ├── App.css
 │   │   ├── main.jsx
-│   │   └── components/
-│   │       ├── Column/
-│   │       ├── TaskCard/
-│   │       └── Editable/
-│   ├── package.json
-│   └── vite.config.js
-│
-├── docs/
-│   ├── user-flow.png              
-│   └── data-flow.png              
+│   │   ├── components/
+│   │   │   ├── AddTask/
+│   │   │   │   ├── AddTaskForm.jsx
+│   │   │   │   └── AddTask.css
+│   │   │   ├── Column/
+│   │   │   │   ├── Column.jsx
+│   │   │   │   └── Column.css
+│   │   │   ├── Editable/
+│   │   │   │   ├── Editable.jsx
+│   │   │   │   └── Editable.css
+│   │   │   └── TaskCard/
+│   │   │       ├── TaskCard.jsx
+│   │   │       └── TaskCard.css
+│   └── package.json
+
+├── docs
+│   ├── user-flow.png
 │
 └── README.md
