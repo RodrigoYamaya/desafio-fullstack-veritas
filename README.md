@@ -71,15 +71,11 @@ A movimentação entre colunas “Em Progresso” e “Concluído” ainda está
 
 🚀 Melhorias Futuras
 
-Adicionar banco de dados (Mysql ou PostgreSQL).
-
-Implementar login e usuários diferentes e altenticação jwt.
-
-permitir  movimentação das tarefas para outras colunas “A Fazer”, “Em Progresso” e “Concluído”.
-
-Melhorar validações e mensagens de erro no frontend.
-
-Adicionar testes automatizados (Go e React Testing Library).
+- Adicionar banco de dados (PostgreSQL ou Mysql)
+- Implementar autenticação JWT e sistema de usuários
+- Adicionar drag & drop para movimentação entre colunas
+- Implementar datas de vencimento e prioridades
+- Adicionar testes automatizados (Go Test + React Testing Library)
 
 
 
@@ -88,8 +84,11 @@ Adicionar testes automatizados (Go e React Testing Library).
 O diagrama abaixo representa as principais ações do usuário dentro do sistema Kanban:
 
 
-![Fluxo do Usuário](image.png)
-
+Usuário acessa o sistema → Visualiza 3 colunas do Kanban
+2. Cria nova tarefa → Tarefa aparece em **"A Fazer"**
+3. Move tarefa para progresso → Tarefa vai para **"Em andamento"**
+4. Conclui tarefa → Tarefa movida para **"Concluída"**
+5. Pode editar ou excluir tarefas em qualquer coluna
 
 
 
@@ -105,6 +104,8 @@ Move tarefa para “Em Progresso”.
 
 Conclui tarefa → aparece em “Concluído”.
 
+
+
 🔁 Fluxo de Dados (Frontend ↔ Backend)
 [Usuário] 
     ↓
@@ -115,6 +116,7 @@ Conclui tarefa → aparece em “Concluído”.
 [Resposta JSON]
     ↓
 [Frontend React atualiza Kanban]
+
 
 
 Explicação:
@@ -129,13 +131,14 @@ O frontend atualiza o estado do Kanban com base na resposta JSON retornada.
 
 
 
+
 📁 Estrutura do Projeto
 projeto-kanban
 │
 ├── backend
 │   ├── main.go
 │   ├── handelers.go
-│   ├── tasks.json (opcional)
+│   ├── tasks.json 
 │   └── models.go
 │
 ├── frontend/
@@ -143,24 +146,16 @@ projeto-kanban
 │   │   ├── api.js
 │   │   ├── App.jsx
 │   │   ├── App.css
-│   │   ├── index.css
 │   │   ├── main.jsx
-│   │   ├── components/
-│   │   │   ├── AddTask/
-│   │   │   │   ├── AddTaskForm.jsx
-│   │   │   │   └── AddTask.css
-│   │   │   ├── Column/
-│   │   │   │   ├── Column.jsx
-│   │   │   │   └── Column.css
-│   │   │   ├── Editable/
-│   │   │   │   ├── Editable.jsx
-│   │   │   │   └── Editable.css
-│   │   │   └── TaskCard/
-│   │   │       ├── TaskCard.jsx
-│   │   │       └── TaskCard.css
-│   └── package.json
-
-├── docs
-│   ├── user-flow.png
+│   │   └── components/
+│   │       ├── Column/
+│   │       ├── TaskCard/
+│   │       └── Editable/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── docs/
+│   ├── user-flow.png              
+│   └── data-flow.png              
 │
 └── README.md
