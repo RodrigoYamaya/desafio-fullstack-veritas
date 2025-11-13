@@ -159,8 +159,5 @@ projeto-kanban
 │   │   │       ├── TaskCard.jsx
 │   │   │       └── TaskCard.css
 │   └── package.json
-
-├── docs
-│   ├── user-flow.png
 │
 └── README.md
